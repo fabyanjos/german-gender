@@ -14,7 +14,7 @@ public class GenderController {
 	@Autowired GenderService service;
 	
 	
-	@RequestMapping(value="/rest/gender", produces={"application/xml"})
+	@RequestMapping(value="/rest/gender", produces={"application/xml", "application/json"})
 	@ResponseBody
 	public ListGender listGender() {
         
