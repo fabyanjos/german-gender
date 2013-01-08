@@ -1,74 +1,32 @@
 package com.fabiale.german.model;
 
-import java.io.Serializable;
-import java.util.List;
+public enum Gender {
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.xml.bind.annotation.XmlRootElement;
+	Masculine("Masculine", "der", "die"), Feminine("Feminie", "die", "die"), Neutral("Neutral", "das", "das");
 
-@Entity(name = "genders")
-@XmlRootElement
-public class Gender implements Serializable {
-
-	private static final long serialVersionUID = 4064262783442995949L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	private String gender;
+	private String name;
 	private String article;
 	private String pluralArticle;
-	@OneToMany(mappedBy = "gender")
-	private List<Word> words;
 
-	public Gender() {
-	}
-
-	public Gender(String gender, String article) {
-		this.gender = gender;
+	private Gender(String name, String article, String pluralArticle) {
+		this.name = name;
 		this.article = article;
+		this.pluralArticle = pluralArticle;
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
+	public String getName() {
+		return name;
 	}
 
 	public String getArticle() {
 		return article;
 	}
 
-	public void setArticle(String article) {
-		this.article = article;
-	}
-
-	public List<Word> getWords() {
-		return words;
-	}
-
-	public void setWords(List<Word> words) {
-		this.words = words;
-	}
-
 	public String getPluralArticle() {
 		return pluralArticle;
 	}
-
-	public void setPluralArticle(String pluralArticle) {
-		this.pluralArticle = pluralArticle;
-	}
+	
+	public String toString() {
+        return name;
+    }
 }
