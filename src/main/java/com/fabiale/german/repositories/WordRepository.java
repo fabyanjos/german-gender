@@ -32,11 +32,11 @@ public class WordRepository {
 
     @Transactional
 	public Integer create(Word word) {
-		this.factory.getCurrentSession().save(word);
+		this.factory.openSession().save(word);
 		return word.getId();
 	}
     
     public Word getById(Integer id) {
-    	return (Word) this.factory.getCurrentSession().get(Word.class, id);
+    	return (Word) this.factory.openSession().get(Word.class, id);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.fabiale.german.gson.GSONHttpMessageConverter;
@@ -38,5 +39,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		converters.add(jsonConverter);
 		converters.add(xmlConverter());
 		super.configureMessageConverters(converters);
+	}
+	
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/index.jsp").setViewName("index");
 	}
 }
